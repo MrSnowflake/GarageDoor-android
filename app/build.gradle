@@ -10,14 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        jackOptions {
-            enabled true
-        }
+        multiDexEnabled = true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     buildTypes {
@@ -26,7 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
+    packagingOptions {
+        exclude 'META-INF/*'
+    }}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -35,8 +34,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
 
-    compile 'com.google.guava:guava:21.0'
-    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile 'com.google.guava:guava:20.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit2:converter-jackson:2.0.0'
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+
     testCompile 'junit:junit:4.12'
 }
